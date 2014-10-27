@@ -1,0 +1,28 @@
+{
+  "name": "comments",
+  "version": "1.0.0",
+  "description": "comments ========",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/lab/bin/lab -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeRunners14/comments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeRunners14/comments/issues"
+  },
+  "homepage": "https://github.com/CodeRunners14/comments",
+  "devDependencies": {
+    "code": "^1.2.0",
+    "hapi": "^7.1.1",
+    "joi": "^4.7.0",
+    "lab": "^5.0.1"
+  }
+}
