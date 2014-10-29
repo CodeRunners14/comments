@@ -6,7 +6,8 @@ var Config = require("./config.js");
 var serverOpts = {
     debug: {
 	request: ['error']
-    }
+    },
+    cors: true
 };
 
 //config
@@ -25,7 +26,7 @@ var server = new Hapi.Server(process.env.PORT|| 4000, serverOpts);
 server.pack.register([
   {
     plugin: require( 'hapi-mongodb'),
-    options: dbOpts
+    options: dbOpts,
   }],
  function (err) {
     if (err) {
@@ -38,6 +39,12 @@ server.route({
     "method" :  'POST',
     "path"   :  '/post',
     "handler":  handlers.postHandler
+});
+
+server.route({
+    "method" :  'GET',
+    "path"   :  '/db',
+    "handler":  handlers.db
 });
 
 if (!module.parent) {
