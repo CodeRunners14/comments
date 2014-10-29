@@ -1,20 +1,6 @@
 var exports = module.exports = {};
 
 
-
-//to static files to server returns eg. CSS
-exports.loadEntry = {
-    directory: {
-        path: 'public',
-        listing: true
-    }
-}
-
-//To serve the form page
-exports.formHandler = function (req, res){
-	res.file('./writecomment.html');
-}
-
 //To create a post
 exports.postHandler = function(request, reply) {
     var db = request.server.plugins['hapi-mongodb'].db;
@@ -22,8 +8,7 @@ exports.postHandler = function(request, reply) {
     collection.find().toArray(function(err, result) {
         var newEntry = {
         user: request.payload.user,
-        title: request.payload.title,
-        message: request.payload.message,
+        title: request.payload.message,
         id: result.length
         };
     db.collection('comments').insert(newEntry, function(err, data){

@@ -20,12 +20,7 @@ var dbOpts = {
 };
 
 // include the serverOpts
-var server = new Hapi.Server(process.env.PORT|| 8080, serverOpts);
-
-server.views({
-    engines: { jade: require('jade') },
-    path: './jade'
-});
+var server = new Hapi.Server(process.env.PORT|| 4000, serverOpts);
 
 server.pack.register([
   {
@@ -40,28 +35,9 @@ server.pack.register([
 });
 
 server.route({
-    method: 'GET',
-    path: '/create',
-    handler: handlers.formHandler
-});
-
-server.route({
     "method" :  'POST',
     "path"   :  '/post',
     "handler":  handlers.postHandler
-});
-
-server.route( {
-   method  : "GET",
-   path    : "/index",
-   handler : handlers.usersHandler
-});
-
-//For CSS etc.
-server.route( {
-  method : "GET",
-  path :  "/{param*}",
-  handler :   handlers.loadEntry
 });
 
 if (!module.parent) {
